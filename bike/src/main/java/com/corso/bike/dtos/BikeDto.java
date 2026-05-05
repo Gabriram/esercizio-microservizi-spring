@@ -1,6 +1,8 @@
 
 package com.corso.bike.dtos;
 
+import com.corso.bike.entity.Bike;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,6 +14,8 @@ import lombok.Builder;
 @Builder
 
 public class BikeDto {
+
+    private Long id;
 
     private String brand; // es. Ducati
 
@@ -26,8 +30,9 @@ public class BikeDto {
     private Double price;
 
     // Mapper: convert Bike entity to BikeDto
-    public static BikeDto fromBike(com.corso.bike.entity.Bike bike) {
+    public static BikeDto fromBike(Bike bike) {
         return BikeDto.builder()
+                .id(bike.getId())
                 .brand(bike.getBrand())
                 .model(bike.getModel())
                 .engCc(bike.getEngCc())
