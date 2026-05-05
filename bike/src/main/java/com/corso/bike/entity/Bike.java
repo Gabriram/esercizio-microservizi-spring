@@ -21,7 +21,7 @@ public class Bike {
     private String model; // es. Panigale V4
 
     @Min(50)
-    @Column(name = "eng_cc")
+    @Column(name = "eng_cc", nullable = false)
     private Integer engCc; // cilindrata in cc
 
     @NotBlank
