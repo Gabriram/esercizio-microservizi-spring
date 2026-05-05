@@ -1,5 +1,6 @@
 package com.corso.bike.entity;
 
+import com.corso.bike.entity.Bike;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.Data;
