@@ -4,11 +4,9 @@ import com.corso.bike.dtos.BikeDto;
 import com.corso.bike.entity.Bike;
 import com.corso.bike.services.BikeService;
 
-import org.apache.catalina.connector.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import org.springframework.web.bind.annotation.PostMapping;
