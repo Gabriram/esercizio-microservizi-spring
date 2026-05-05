@@ -1,10 +1,12 @@
-package com.eleventh.workshop.bikesservice.model;
+package com.corso.bike;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
+import lombok.Data;
 
 @Entity
 @Table(name = "bikes")
+@Data
 public class Bike {
 
     @Id
@@ -12,16 +14,16 @@ public class Bike {
     private Long id;
 
     @NotBlank
-    private String brand;        // es. Ducati
+    private String brand; // es. Ducati
 
     @NotBlank
-    private String model;        // es. Panigale V4
+    private String model; // es. Panigale V4
 
     @Min(50)
-    private Integer engineCc;    // cilindrata in cc
+    private Integer engCc; // cilindrata in cc
 
     @NotBlank
-    private String type;         // sport, naked, enduro, scooter...
+    private String type; // sport, naked, enduro, scooter...
 
     @Min(1900)
     private Integer year;
@@ -29,19 +31,4 @@ public class Bike {
     @Min(0)
     private Double price;
 
-    // getter & setter (oppure @Data di Lombok)
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-    public String getBrand() { return brand; }
-    public void setBrand(String brand) { this.brand = brand; }
-    public String getModel() { return model; }
-    public void setModel(String model) { this.model = model; }
-    public Integer getEngineCc() { return engineCc; }
-    public void setEngineCc(Integer engineCc) { this.engineCc = engineCc; }
-    public String getType() { return type; }
-    public void setType(String type) { this.type = type; }
-    public Integer getYear() { return year; }
-    public void setYear(Integer year) { this.year = year; }
-    public Double getPrice() { return price; }
-    public void setPrice(Double price) { this.price = price; }
 }
