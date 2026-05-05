@@ -27,7 +27,7 @@ public class BikeDto {
     private String model; // es. Panigale V4
 
     @Min(50)
-    private Integer engCc; // cilindrata in cc
+    private Integer eng_cc; // cilindrata in cc
 
     @NotBlank
     private String type; // sport, naked, enduro, scooter...
@@ -44,7 +44,7 @@ public class BikeDto {
                 .id(bike.getId())
                 .brand(bike.getBrand())
                 .model(bike.getModel())
-                .engCc(bike.getEngCc())
+                .eng_cc(bike.geteng_cc())
                 .type(bike.getType())
                 .year(bike.getYear())
                 .price(bike.getPrice())

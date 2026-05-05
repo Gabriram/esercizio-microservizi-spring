@@ -37,7 +37,7 @@ public class BikeService {
                 .map(bike -> {
                     bike.setBrand(updated.getBrand());
                     bike.setModel(updated.getModel());
-                    bike.setEngCc(updated.getEngCc());
+                    bike.seteng_cc(updated.geteng_cc());
                     bike.setType(updated.getType());
                     bike.setYear(updated.getYear());
                     bike.setPrice(updated.getPrice());
