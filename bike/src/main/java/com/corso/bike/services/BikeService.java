@@ -28,6 +28,10 @@ public class BikeService {
         return repository.save(bike);
     }
 
+    public void deleteById(Long id) {
+        repository.deleteById(id);
+    }
+
     public Bike update(Long id, Bike updated) {
         return repository.findById(id)
                 .map(bike -> {

@@ -1,5 +1,6 @@
 package com.corso.bike;
 
+import com.corso.bike.dtos.BikeDto;
 import com.corso.bike.entity.Bike;
 import com.corso.bike.services.BikeService;
 
@@ -27,29 +28,34 @@ public class Controller {
     }
 
     @GetMapping
-    public List<Bike> getAll() {
-        return service.findAll();
+    public List<BikeDto> getAll() {
+        return service.findAll().stream()
+                .map(BikeDto::fromBike)
+                .toList();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Bike> getById(@PathVariable Long id) {
+    public ResponseEntity<BikeDto> getById(@PathVariable Long id) {
         return service.findById(id)
+                .map(BikeDto::fromBike)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public ResponseEntity<Bike> create(@RequestBody Bike bike) {
-        return ResponseEntity.status(201).body(service.save(bike));
+    public ResponseEntity<BikeDto> creatEntity(@RequestBody Bike bike) {
+        Bike saved = service.save(bike);
+        return ResponseEntity.ok(BikeDto.fromBike(saved));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Bike> update(@PathVariable Long id, @RequestBody Bike bike) {
-        return ResponseEntity.ok(service.update(id, bike));
+    public ResponseEntity<BikeDto> update(@PathVariable Long id, @RequestBody Bike bike) {
+        return ResponseEntity.ok(BikeDto.fromBike(service.update(id, bike)));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
+        service.deleteById(id);
         return ResponseEntity.noContent().build();
     }
 
