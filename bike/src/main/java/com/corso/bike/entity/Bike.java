@@ -21,7 +21,8 @@ public class Bike {
     private String model; // es. Panigale V4
 
     @Min(50)
-    private Integer eng_cc; // cilindrata in cc
+    @Column(name = "eng_cc")
+    private Integer engCc; // cilindrata in cc
 
     @NotBlank
     private String type; // sport, naked, enduro, scooter...

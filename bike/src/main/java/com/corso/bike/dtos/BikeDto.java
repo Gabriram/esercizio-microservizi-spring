@@ -44,7 +44,7 @@ public class BikeDto {
                 .id(bike.getId())
                 .brand(bike.getBrand())
                 .model(bike.getModel())
-                .eng_cc(bike.geteng_cc())
+                .eng_cc(bike.getEngCc())
                 .type(bike.getType())
                 .year(bike.getYear())
                 .price(bike.getPrice())
