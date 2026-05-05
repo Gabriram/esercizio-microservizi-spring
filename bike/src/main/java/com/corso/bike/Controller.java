@@ -41,9 +41,9 @@ public class Controller {
     }
 
     @PostMapping
-    public ResponseEntity<BikeDto> creatEntity(@RequestBody Bike bike) {
+    public ResponseEntity<BikeDto> create(@RequestBody Bike bike) {
         Bike saved = service.save(bike);
-        return ResponseEntity.ok(BikeDto.fromBike(saved));
+        return ResponseEntity.status(201).body(BikeDto.fromBike(saved));
     }
 
     @PutMapping("/{id}")
