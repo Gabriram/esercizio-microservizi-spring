@@ -28,7 +28,7 @@ public class BikeService {
         return repository.save(bike);
     }
 
-    public void deleteById(Long id) {
+    public void delete(Long id) {
         repository.deleteById(id);
     }
 
