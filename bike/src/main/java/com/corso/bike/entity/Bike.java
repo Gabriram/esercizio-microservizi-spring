@@ -1,4 +1,4 @@
-package com.corso.bike;
+package com.corso.bike.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
