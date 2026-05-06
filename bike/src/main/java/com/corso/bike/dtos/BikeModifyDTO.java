@@ -8,7 +8,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class BikeCreateDto {
+public class BikeModifyDTO {
 
     @NotBlank
     private String brand;

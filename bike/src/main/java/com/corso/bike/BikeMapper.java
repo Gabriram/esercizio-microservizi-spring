@@ -2,15 +2,14 @@ package com.corso.bike;
 
 import org.springframework.stereotype.Component;
 
-import com.corso.bike.dtos.BikeCreateDto;
+import com.corso.bike.dtos.BikeModifyDTO;
 import com.corso.bike.dtos.BikeResponseDto;
-import com.corso.bike.dtos.BikeUpdateRequestDto;
 import com.corso.bike.entity.Bike;
 
 @Component
 public class BikeMapper {
 
-    public BikeResponseDto toResponseDto(Bike bike) {
+    public BikeResponseDto toBikeResponseDto(Bike bike) {
         return BikeResponseDto.builder()
                 .id(bike.getId())
                 .brand(bike.getBrand())
@@ -22,25 +21,14 @@ public class BikeMapper {
                 .build();
     }
 
-    public Bike toBikeEntity(BikeCreateDto bikeCreateDto) {
+    public Bike toBikeEntity(BikeModifyDTO bikeModifyDTO) {
         return Bike.builder()
-                .brand(bikeCreateDto.getBrand())
-                .model(bikeCreateDto.getModel())
-                .engCc(bikeCreateDto.getEngCc())
-                .type(bikeCreateDto.getType())
-                .year(bikeCreateDto.getYear())
-                .price(bikeCreateDto.getPrice())
-                .build();
-    }
-
-    public Bike toBikeEntity(BikeUpdateRequestDto bikeUpdateRequestDto) {
-        return Bike.builder()
-                .brand(bikeUpdateRequestDto.getBrand())
-                .model(bikeUpdateRequestDto.getModel())
-                .engCc(bikeUpdateRequestDto.getEngCc())
-                .type(bikeUpdateRequestDto.getType())
-                .year(bikeUpdateRequestDto.getYear())
-                .price(bikeUpdateRequestDto.getPrice())
+                .brand(bikeModifyDTO.getBrand())
+                .model(bikeModifyDTO.getModel())
+                .engCc(bikeModifyDTO.getEngCc())
+                .type(bikeModifyDTO.getType())
+                .year(bikeModifyDTO.getYear())
+                .price(bikeModifyDTO.getPrice())
                 .build();
     }
 
