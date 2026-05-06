@@ -3,11 +3,14 @@ package com.corso.bike.entity;
 import com.corso.bike.entity.Bike;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
+import lombok.Builder;
 import lombok.Data;
 
 @Entity
 @Table(name = "bikes")
 @Data
+@Builder
+
 public class Bike {
 
     @Id
@@ -32,5 +35,17 @@ public class Bike {
 
     @Min(0)
     private Double price;
+
+    public static Bike fromDto(com.corso.bike.dtos.BikeDto dto) {
+        return Bike.builder()
+                .id(dto.getId())
+                .brand(dto.getBrand())
+                .model(dto.getModel())
+                .engCc(dto.getEng_cc())
+                .type(dto.getType())
+                .year(dto.getYear())
+                .price(dto.getPrice())
+                .build();
+    }
 
 }

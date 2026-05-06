@@ -5,6 +5,7 @@ import com.corso.bike.entity.Bike;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,7 +18,6 @@ import lombok.Builder;
 
 public class BikeDto {
 
-    @NotBlank
     private Long id;
 
     @NotBlank
@@ -32,15 +32,16 @@ public class BikeDto {
     @NotBlank
     private String type; // sport, naked, enduro, scooter...
 
-    @NotBlank
+    @NotNull
     private Integer year;
 
-    @NotBlank
+    @NotNull
     private Double price;
 
     // Mapper: convert Bike entity to BikeDto
     public static BikeDto fromBike(Bike bike) {
         return BikeDto.builder()
+                .id(bike.getId())
                 .brand(bike.getBrand())
                 .model(bike.getModel())
                 .eng_cc(bike.getEngCc())

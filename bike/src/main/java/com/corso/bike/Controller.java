@@ -41,13 +41,14 @@ public class Controller {
     }
 
     @PostMapping
-    public ResponseEntity<BikeDto> create(@RequestBody Bike bike) {
-        Bike saved = service.save(bike);
+    public ResponseEntity<BikeDto> create(@RequestBody BikeDto bike) {
+        Bike saved = service.save(Bike.fromDto(bike));
         return ResponseEntity.status(201).body(BikeDto.fromBike(saved));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<BikeDto> update(@PathVariable Long id, @RequestBody Bike bike) {
+    public ResponseEntity<BikeDto> update(@PathVariable Long id, @RequestBody BikeDto bikeDto) {
+        Bike bike = Bike.fromDto(bikeDto);
         return ResponseEntity.ok(BikeDto.fromBike(service.update(id, bike)));
     }
 
