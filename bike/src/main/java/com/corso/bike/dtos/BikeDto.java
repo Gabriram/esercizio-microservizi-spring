@@ -1,9 +1,8 @@
-
 package com.corso.bike.dtos;
 
 import com.corso.bike.entity.Bike;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-import jakarta.persistence.Column;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -28,7 +27,7 @@ public class BikeDto {
     private String model; // es. Panigale V4
 
     @Min(50)
-    @Column(name = "eng_cc", nullable = false)
+    @JsonProperty("eng_cc")
     private Integer engCc; // cilindrata in cc
 
     @NotBlank
@@ -47,7 +46,7 @@ public class BikeDto {
                 .id(bike.getId())
                 .brand(bike.getBrand())
                 .model(bike.getModel())
-                .eng_cc(bike.getEngCc())
+                .engCc(bike.getEngCc())
                 .type(bike.getType())
                 .year(bike.getYear())
                 .price(bike.getPrice())
