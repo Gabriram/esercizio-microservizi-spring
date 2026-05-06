@@ -29,10 +29,8 @@ public class BikeService {
     }
 
     public BikeResponseDTO save(Bike dto) {
-        Bike bike = bikeRepository.save(dto);
-        // Note: The original code had a potential bug here, saving twice. Assuming the
-        // intent is to map the saved entity once.
-        return bikeMapper.toBikeResponseDto(bikeRepository.save(bike));
+        Bike savedBike = bikeRepository.save(dto);
+        return bikeMapper.toBikeResponseDto(savedBike);
     }
 
     public void delete(Long id) {

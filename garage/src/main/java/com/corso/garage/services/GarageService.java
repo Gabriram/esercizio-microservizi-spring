@@ -10,13 +10,9 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import com.corso.garage.GarageMapper;
 import com.corso.garage.dtos.GarageResponseDto;
-import com.corso.garage.dtos.GarageModifyDataDto;
-import com.corso.garage.dtos.VehicleModifyDataDto;
-import com.corso.garage.dtos.VehicleResponseDto;
 import com.corso.garage.entities.Garage;
 import com.corso.garage.entities.Vehicle;
 import com.corso.garage.repository.GarageRepository;
-import com.corso.garage.repository.VehicleRepository;
 
 @Service
 @RequiredArgsConstructor
@@ -59,4 +55,22 @@ public class GarageService {
                 .map(garageMapper::toGarageResponseDto);
 
     }
+
+    public GarageResponseDto save(Garage garage) {
+        Garage savedGarage = garageRepository.save(garage);
+        return garageMapper.toGarageResponseDto(savedGarage);
+    }
+
+    public void delete(Long id) {
+        garageRepository.deleteById(id);
+    }
+
+    public GarageResponseDto update(Long id, Garage garage) {
+        return garageRepository.findById(id).map(existingGarage -> {
+            existingGarage.setOwnerName(garage.getOwnerName());
+            existingGarage.setAddress(garage.getAddress());
+            return garageMapper.toGarageResponseDto(garageRepository.save(existingGarage));
+        }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Garage not found with ID: " + id));
+    }
+
 }
