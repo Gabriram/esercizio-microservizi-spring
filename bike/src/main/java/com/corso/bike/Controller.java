@@ -1,7 +1,7 @@
 package com.corso.bike;
 
 import com.corso.bike.dtos.BikeModifyDTO;
-import com.corso.bike.dtos.BikeResponseDto;
+import com.corso.bike.dtos.BikeResponseDTO;
 import com.corso.bike.entity.Bike;
 import com.corso.bike.services.BikeService;
 
@@ -31,27 +31,27 @@ public class Controller {
     }
 
     @GetMapping
-    public List<BikeResponseDto> getAll() {
+    public List<BikeResponseDTO> getAll() {
         return bikeService.getAllBikes();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<BikeResponseDto> getById(@PathVariable Long id) {
-        Optional<BikeResponseDto> bike = bikeService.getBikeById(id);
+    public ResponseEntity<BikeResponseDTO> getById(@PathVariable Long id) {
+        Optional<BikeResponseDTO> bike = bikeService.getBikeById(id);
         return bike.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public ResponseEntity<BikeResponseDto> create(@RequestBody BikeModifyDTO bikeDto) {
+    public ResponseEntity<BikeResponseDTO> create(@RequestBody BikeModifyDTO bikeDto) {
         Bike bike = bikeMapper.toBikeEntity(bikeDto);
-        BikeResponseDto created = bikeService.save(bike);
+        BikeResponseDTO created = bikeService.save(bike);
         return ResponseEntity.ok(created);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<BikeResponseDto> update(@PathVariable Long id, @RequestBody BikeModifyDTO bikeDto) {
+    public ResponseEntity<BikeResponseDTO> update(@PathVariable Long id, @RequestBody BikeModifyDTO bikeDto) {
         Bike bike = bikeMapper.toBikeEntity(bikeDto);
-        BikeResponseDto updated = bikeService.update(id, bike);
+        BikeResponseDTO updated = bikeService.update(id, bike);
         return ResponseEntity.ok(updated);
     }
 

@@ -5,7 +5,7 @@ import com.corso.bike.BikeMapper;
 
 import lombok.RequiredArgsConstructor;
 
-import com.corso.bike.dtos.BikeResponseDto;
+import com.corso.bike.dtos.BikeResponseDTO;
 import com.corso.bike.entity.Bike;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,18 +24,18 @@ public class BikeService {
     @Autowired
     private BikeMapper bikeMapper;
 
-    public List<BikeResponseDto> getAllBikes() {
+    public List<BikeResponseDTO> getAllBikes() {
         return bikeRepository.findAll().stream()
                 .map(bike -> bikeMapper.toBikeResponseDto(bike))
                 .collect(Collectors.toList());
     }
 
-    public Optional<BikeResponseDto> getBikeById(Long id) {
+    public Optional<BikeResponseDTO> getBikeById(Long id) {
         return bikeRepository.findById(id)
                 .map(bike -> bikeMapper.toBikeResponseDto(bike));
     }
 
-    public BikeResponseDto save(Bike dto) {
+    public BikeResponseDTO save(Bike dto) {
         Bike bike = bikeRepository.save(dto);
         return bikeMapper.toBikeResponseDto(bikeRepository.save(bike));
     }
@@ -44,7 +44,7 @@ public class BikeService {
         bikeRepository.deleteById(id);
     }
 
-    public BikeResponseDto update(Long id, Bike dto) {
+    public BikeResponseDTO update(Long id, Bike dto) {
         return bikeRepository.findById(id).map(existingBike -> {
             existingBike.setBrand(dto.getBrand());
             existingBike.setModel(dto.getModel());
