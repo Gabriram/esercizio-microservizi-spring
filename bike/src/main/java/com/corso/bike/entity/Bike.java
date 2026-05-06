@@ -3,12 +3,16 @@ package com.corso.bike.entity;
 import com.corso.bike.entity.Bike;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "bikes")
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 
 public class Bike {
@@ -41,7 +45,7 @@ public class Bike {
                 .id(dto.getId())
                 .brand(dto.getBrand())
                 .model(dto.getModel())
-                .engCc(dto.getEng_cc())
+                .engCc(dto.getEngCc())
                 .type(dto.getType())
                 .year(dto.getYear())
                 .price(dto.getPrice())
