@@ -1,6 +1,5 @@
 package com.corso.bike.entity;
 
-import com.corso.bike.entity.Bike;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
@@ -9,7 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "bikes")
+@Table(name = "bikes", schema = "bikesdb")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,34 +21,21 @@ public class Bike {
     private Long id;
 
     @NotBlank
-    private String brand; // es. Ducati
+    private String brand;
 
     @NotBlank
-    private String model; // es. Panigale V4
-
+    private String model;
     @Min(50)
     @Column(name = "eng_cc", nullable = false)
-    private Integer engCc; // cilindrata in cc
+    private Integer engCc;
 
     @NotBlank
-    private String type; // sport, naked, enduro, scooter...
+    private String type;
 
     @Min(1900)
     private Integer year;
 
     @Min(0)
     private Double price;
-
-    public static Bike fromDto(com.corso.bike.dtos.BikeDto dto) {
-        return Bike.builder()
-                .id(dto.getId())
-                .brand(dto.getBrand())
-                .model(dto.getModel())
-                .engCc(dto.getEngCc())
-                .type(dto.getType())
-                .year(dto.getYear())
-                .price(dto.getPrice())
-                .build();
-    }
 
 }
