@@ -33,6 +33,7 @@ public class BikeDto {
     private String type; // sport, naked, enduro, scooter...
 
     @NotNull
+    @Min(1900)
     private Integer year;
 
     @NotNull
