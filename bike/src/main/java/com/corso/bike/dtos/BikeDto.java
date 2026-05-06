@@ -43,6 +43,7 @@ public class BikeDto {
     // Mapper: convert Bike entity to BikeDto
     public static BikeDto fromBike(Bike bike) {
         return BikeDto.builder()
+                .id(bike.getId())
                 .brand(bike.getBrand())
                 .model(bike.getModel())
                 .engCc(bike.getEngCc())

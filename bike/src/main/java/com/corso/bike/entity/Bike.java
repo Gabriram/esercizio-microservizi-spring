@@ -42,6 +42,7 @@ public class Bike {
 
     public static Bike fromDto(com.corso.bike.dtos.BikeDto dto) {
         return Bike.builder()
+                .id(dto.getId())
                 .brand(dto.getBrand())
                 .model(dto.getModel())
                 .engCc(dto.getEngCc())
