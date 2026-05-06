@@ -3,6 +3,7 @@ package com.corso.bike.dtos;
 
 import com.corso.bike.entity.Bike;
 
+import jakarta.persistence.Column;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -27,7 +28,8 @@ public class BikeDto {
     private String model; // es. Panigale V4
 
     @Min(50)
-    private Integer eng_cc; // cilindrata in cc
+    @Column(name = "eng_cc", nullable = false)
+    private Integer engCc; // cilindrata in cc
 
     @NotBlank
     private String type; // sport, naked, enduro, scooter...
