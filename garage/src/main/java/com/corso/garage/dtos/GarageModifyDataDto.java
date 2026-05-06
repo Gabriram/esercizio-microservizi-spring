@@ -1,14 +1,13 @@
-package dtos;
+package com.corso.garage.dtos;
 
-import java.util.ArrayList;
-
-import entities.Vehicle;
-import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Builder;
 import lombok.Data;
-import jakarta.persistence.CascadeType;
+import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.CascadeType;
+import com.corso.garage.entities.Vehicle;
 
 @Data
 @Builder

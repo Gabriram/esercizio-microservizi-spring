@@ -1,9 +1,15 @@
+package com.corso.garage;
+
 import org.springframework.stereotype.Component;
-import dtos.*;
-import entities.*;
+import com.corso.garage.dtos.GarageModifyDataDto;
+import com.corso.garage.dtos.GarageResponseDto;
+import com.corso.garage.dtos.VehicleModifyDataDto;
+import com.corso.garage.dtos.VehicleResponseDto;
+import com.corso.garage.entities.Garage;
+import com.corso.garage.entities.Vehicle;
 
 @Component
-public class Mapper {
+public class GarageMapper {
 
     public Garage toGarageEntity(GarageModifyDataDto dto) {
         return Garage.builder()

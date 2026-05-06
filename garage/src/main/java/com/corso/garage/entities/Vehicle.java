@@ -1,4 +1,4 @@
-package entities;
+package com.corso.garage.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

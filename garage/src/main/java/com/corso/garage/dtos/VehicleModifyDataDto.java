@@ -1,4 +1,4 @@
-package dtos;
+package com.corso.garage.dtos;
 
 import lombok.Builder;
 import lombok.Data;

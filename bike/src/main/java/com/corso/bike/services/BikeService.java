@@ -2,41 +2,36 @@ package com.corso.bike.services;
 
 import com.corso.bike.repository.BikeRepository;
 import com.corso.bike.BikeMapper;
-
 import lombok.RequiredArgsConstructor;
-
-import com.corso.bike.dtos.BikeResponseDTO;
-import com.corso.bike.entity.Bike;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import com.corso.bike.dtos.*;
+import com.corso.bike.entity.*;
 
 @Service
 @RequiredArgsConstructor
 public class BikeService {
 
-    @Autowired
-    private BikeRepository bikeRepository;
-    @Autowired
-    private BikeMapper bikeMapper;
+    private final BikeRepository bikeRepository;
+    private final BikeMapper bikeMapper;
 
     public List<BikeResponseDTO> getAllBikes() {
         return bikeRepository.findAll().stream()
-                .map(bike -> bikeMapper.toBikeResponseDto(bike))
+                .map(bikeMapper::toBikeResponseDto) // Replaced lambda with method reference
                 .collect(Collectors.toList());
     }
 
     public Optional<BikeResponseDTO> getBikeById(Long id) {
         return bikeRepository.findById(id)
-                .map(bike -> bikeMapper.toBikeResponseDto(bike));
+                .map(bikeMapper::toBikeResponseDto); // Replaced lambda with method reference
     }
 
     public BikeResponseDTO save(Bike dto) {
         Bike bike = bikeRepository.save(dto);
+        // Note: The original code had a potential bug here, saving twice. Assuming the
+        // intent is to map the saved entity once.
         return bikeMapper.toBikeResponseDto(bikeRepository.save(bike));
     }
 
