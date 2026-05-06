@@ -18,7 +18,6 @@ import lombok.Builder;
 
 public class BikeDto {
 
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Long id;
 
     @NotBlank
