@@ -46,7 +46,7 @@ public class Controller {
     @PostMapping("/api/garage")
     public ResponseEntity<GarageResponseDto> createGarage(@RequestBody GarageModifyDataDto garageDto) {
         Garage garage = garageMapper.toGarageEntity(garageDto);
-        GarageResponseDto created = garageService.createGarage(garage);
+        GarageResponseDto created = garageService.save(garage);
         return ResponseEntity.ok(created);
 
     }
