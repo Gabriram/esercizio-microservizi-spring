@@ -22,16 +22,16 @@ public class GarageService {
     private final GarageRepository garageRepository;
     private final GarageMapper garageMapper;
 
-    @Value("${service.bikes.url}")
+    @Value("${services.bikes.url}")
     private String bikesUrl;
 
-    @Value("${service.cars.url}")
+    @Value("${services.cars.url}")
     private String carsUrl;
 
     public GarageResponseDto addVehicle(Long garageId, Vehicle v) {
         if (!vehicleValidator.exists(v.getVehicleType(), v.getExternalId())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
-                    String.format("Vehicle does not exist", v.getVehicleType(), v.getExternalId()));
+                    String.format("Vehicle does not exist: %s, %d", v.getVehicleType(), v.getExternalId()));
         }
 
         Garage garage = garageRepository.findById(garageId)

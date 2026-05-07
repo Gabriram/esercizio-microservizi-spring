@@ -1,28 +1,24 @@
 package com.corso.garage;
 
-import com.corso.garage.services.VehicleValidator;
 import java.util.List;
 import java.util.Optional;
 
-import org.apache.catalina.connector.Response;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.bind.annotation.GetMapping;
 import com.corso.garage.dtos.GarageModifyDataDto;
 import com.corso.garage.dtos.VehicleModifyDataDto;
-import com.corso.garage.dtos.VehicleResponseDto;
 import com.corso.garage.dtos.GarageResponseDto;
 import com.corso.garage.entities.Garage;
 import com.corso.garage.entities.Vehicle;
-import com.corso.garage.repository.GarageRepository;
 import com.corso.garage.services.GarageService;
+
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -31,16 +27,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RestController
 @RequestMapping("/api/garages")
 @CrossOrigin("*")
+@RequiredArgsConstructor
 public class Controller {
 
-    @Autowired
-    private VehicleValidator vehicleValidator;
-    @Autowired
-    private GarageService garageService;
-    @Autowired
-    private GarageMapper garageMapper;
-    @Autowired
-    private GarageRepository garageRepository;
+    private final GarageService garageService;
+
+    private final GarageMapper garageMapper;
 
     @GetMapping
     public List<GarageResponseDto> getAllGarage() {

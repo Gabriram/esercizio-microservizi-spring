@@ -8,10 +8,10 @@ import org.springframework.beans.factory.annotation.Value;
 @Configuration
 public class RestClientConfig {
 
-    @Value("${service.bikes.url}")
+    @Value("${services.bikes.url}")
     private String bikesUrl;
 
-    @Value("${service.cars.url}")
+    @Value("${services.cars.url}")
     private String carsUrl;
 
     @Bean(name = "bikesClient")
