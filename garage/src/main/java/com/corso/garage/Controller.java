@@ -42,25 +42,25 @@ public class Controller {
     @Autowired
     private GarageRepository garageRepository;
 
-    @GetMapping("/api/garages")
+    @GetMapping
     public List<GarageResponseDto> getAllGarage() {
         return garageService.getAllGarage();
     }
 
-    @GetMapping("/api/garages/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<GarageResponseDto> getGarageById(@PathVariable Long id) {
         Optional<GarageResponseDto> garage = garageService.getGarageById(id);
         return garage.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping("/api/garages")
+    @PostMapping
     public ResponseEntity<GarageResponseDto> createGarage(@RequestBody GarageModifyDataDto garageDto) {
         Garage garage = garageMapper.toGarageEntity(garageDto);
         GarageResponseDto created = garageService.save(garage);
         return ResponseEntity.status(HttpStatus.CREATED).body(created);
     }
 
-    @PutMapping("/api/garages/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<GarageResponseDto> updateGarage(@PathVariable Long id,
             @RequestBody GarageModifyDataDto garageDto) {
         Garage garage = garageMapper.toGarageEntity(garageDto);
@@ -69,7 +69,7 @@ public class Controller {
 
     }
 
-    @DeleteMapping("/api/garages/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteGarage(@PathVariable Long id) {
         garageService.delete(id);
         return ResponseEntity.noContent().build();
