@@ -2,6 +2,7 @@ package com.corso.cars.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -11,6 +12,7 @@ import com.corso.cars.dtos.CarsResponseDto;
 import com.corso.cars.entity.Cars;
 
 @Service
+@Transactional
 public class CarsService {
 
     @Autowired

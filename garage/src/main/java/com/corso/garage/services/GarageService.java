@@ -2,6 +2,7 @@ package com.corso.garage.services;
 
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.http.HttpStatus;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +17,7 @@ import com.corso.garage.repository.GarageRepository;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class GarageService {
 
     private final VehicleValidator vehicleValidator;
