@@ -1,7 +1,5 @@
 package com.corso.garage.entities;
 
-import java.util.ArrayList;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -31,6 +29,5 @@ public class Garage {
     private String address;
 
     @OneToMany(mappedBy = "garage", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Vehicle> vehicles = new ArrayList<>();
-
+    private List<Vehicle> vehicles;
 }
