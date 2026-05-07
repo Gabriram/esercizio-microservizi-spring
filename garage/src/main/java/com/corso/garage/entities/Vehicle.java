@@ -10,13 +10,17 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import jakarta.persistence.Id;
 
 @Entity
 @Data
 @Table(name = "vehicles", schema = "vehicles")
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 
 public class Vehicle {
