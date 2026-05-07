@@ -17,5 +17,4 @@ public class GarageModifyDataDto {
 
     private String address;
 
-    private List<VehicleModifyDataDto> vehicles;
 }
