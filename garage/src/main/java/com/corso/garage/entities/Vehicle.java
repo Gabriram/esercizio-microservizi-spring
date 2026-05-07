@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Column;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
@@ -18,7 +19,7 @@ import jakarta.persistence.Id;
 
 @Entity
 @Data
-@Table(name = "vehicles", schema = "vehicles")
+@Table(name = "vehicles")
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -29,9 +30,11 @@ public class Vehicle {
     private Long id;
 
     @NotNull
+    @Column(name = "external_id")
     private Long externalId; // id della bike o della car
 
     @NotBlank
+    @Column(name = "vehicle_type")
     private String vehicleType; // "BIKE" o "CAR"
 
     @ManyToOne

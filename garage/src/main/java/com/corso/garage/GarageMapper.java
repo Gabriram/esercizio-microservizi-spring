@@ -7,6 +7,7 @@ import com.corso.garage.dtos.VehicleModifyDataDto;
 import com.corso.garage.dtos.VehicleResponseDto;
 import com.corso.garage.entities.Garage;
 import com.corso.garage.entities.Vehicle;
+import java.util.List;
 
 @Component
 public class GarageMapper {
@@ -38,6 +39,11 @@ public class GarageMapper {
                 .id(garage.getId())
                 .ownerName(garage.getOwnerName())
                 .address(garage.getAddress())
+                .vehicles(garage.getVehicles() == null
+                        ? List.of()
+                        : garage.getVehicles().stream()
+                                .map(this::toVehicleResponseDto)
+                                .toList())
                 .build();
     }
 

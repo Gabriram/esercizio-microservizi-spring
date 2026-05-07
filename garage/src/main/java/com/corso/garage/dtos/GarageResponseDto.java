@@ -14,6 +14,6 @@ public class GarageResponseDto {
 
     private String address;
 
-    private List<VehicleModifyDataDto> vehicles;
+    private List<VehicleResponseDto> vehicles;
 
 }
