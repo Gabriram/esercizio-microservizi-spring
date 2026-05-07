@@ -3,14 +3,14 @@ package com.corso.bike;
 import org.springframework.stereotype.Component;
 
 import com.corso.bike.dtos.BikeModifyDTO;
-import com.corso.bike.dtos.BikeResponseDTO;
+import com.corso.bike.dtos.BikeResponseDto;
 import com.corso.bike.entity.Bike;
 
 @Component
 public class BikeMapper {
 
-    public BikeResponseDTO toBikeResponseDto(Bike bike) {
-        return BikeResponseDTO.builder()
+    public BikeResponseDto toBikeResponseDto(Bike bike) {
+        return BikeResponseDto.builder()
                 .id(bike.getId())
                 .brand(bike.getBrand())
                 .model(bike.getModel())

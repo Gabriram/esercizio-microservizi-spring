@@ -17,18 +17,18 @@ public class BikeService {
     private final BikeRepository bikeRepository;
     private final BikeMapper bikeMapper;
 
-    public List<BikeResponseDTO> getAllBikes() {
+    public List<BikeResponseDto> getAllBikes() {
         return bikeRepository.findAll().stream()
                 .map(bikeMapper::toBikeResponseDto) // Replaced lambda with method reference
                 .collect(Collectors.toList());
     }
 
-    public Optional<BikeResponseDTO> getBikeById(Long id) {
+    public Optional<BikeResponseDto> getBikeById(Long id) {
         return bikeRepository.findById(id)
                 .map(bikeMapper::toBikeResponseDto); // Replaced lambda with method reference
     }
 
-    public BikeResponseDTO save(Bike dto) {
+    public BikeResponseDto save(Bike dto) {
         Bike savedBike = bikeRepository.save(dto);
         return bikeMapper.toBikeResponseDto(savedBike);
     }
@@ -37,7 +37,7 @@ public class BikeService {
         bikeRepository.deleteById(id);
     }
 
-    public BikeResponseDTO update(Long id, Bike dto) {
+    public BikeResponseDto update(Long id, Bike dto) {
         return bikeRepository.findById(id).map(existingBike -> {
             existingBike.setBrand(dto.getBrand());
             existingBike.setModel(dto.getModel());
