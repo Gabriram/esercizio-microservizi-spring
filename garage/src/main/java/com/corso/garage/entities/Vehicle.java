@@ -31,14 +31,14 @@ public class Vehicle {
 
     @NotNull
     @Column(name = "external_id")
-    private Long externalId; // id della bike o della car
+    private Long externalId;
 
     @NotBlank
     @Column(name = "vehicle_type")
-    private String vehicleType; // "BIKE" o "CAR"
+    private String vehicleType;
 
     @JoinColumn(name = "garage_id")
-    @JsonIgnore // evita ciclo di serializzazione
+    @JsonIgnore
     private Garage garage;
 
 }
