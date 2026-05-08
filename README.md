@@ -1,4 +1,5 @@
 # 🧪 Workshop: Sviluppo a Microservizi in Java
+# Per lo scopo di questo esercizio non è stato usato Docker in questa iterazione
 
 ### Hands-on Lab · Eleventh Training
 
