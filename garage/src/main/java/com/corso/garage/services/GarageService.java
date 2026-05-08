@@ -14,6 +14,7 @@ import com.corso.garage.dtos.GarageResponseDto;
 import com.corso.garage.entities.Garage;
 import com.corso.garage.entities.Vehicle;
 import com.corso.garage.repository.GarageRepository;
+import com.corso.garage.dtos.VehicleResponseDto;
 
 @Service
 @RequiredArgsConstructor
@@ -73,6 +74,14 @@ public class GarageService {
             existingGarage.setAddress(garage.getAddress());
             return garageMapper.toGarageResponseDto(garageRepository.save(existingGarage));
         }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Garage not found with ID: " + id));
+    }
+
+    public Optional<VehicleResponseDto> getVehicleById(Long id) {
+        return garageRepository.findById(id)
+                .flatMap(garage -> garage.getVehicles().stream()
+                        .filter(vehicle -> vehicle.getId().equals(id))
+                        .findFirst())
+                .map(garageMapper::toVehicleResponseDto);
     }
 
 }

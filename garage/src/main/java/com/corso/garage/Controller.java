@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
 import com.corso.garage.dtos.GarageModifyDataDto;
 import com.corso.garage.dtos.VehicleModifyDataDto;
+import com.corso.garage.dtos.VehicleResponseDto;
 import com.corso.garage.dtos.GarageResponseDto;
 import com.corso.garage.entities.Garage;
 import com.corso.garage.entities.Vehicle;
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("/api/garages")
@@ -75,4 +77,10 @@ public class Controller {
         return ResponseEntity.status(HttpStatus.CREATED).body(updatedGarage);
     }
 
+    @GetMapping("/{id}/vehicles")
+    public ResponseEntity<VehicleResponseDto> getVehicle(@RequestParam Long id) {
+        Optional<VehicleResponseDto> vehicleOptional = garageService.getVehicleById(id);
+        return vehicleOptional.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+
+    }
 }

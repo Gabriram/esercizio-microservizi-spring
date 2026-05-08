@@ -4,7 +4,19 @@ async function loadGarages() {
     const data = await res.json();
     document.getElementById("output").textContent =
         JSON.stringify(data, null, 2);
+
+
+
 }
+
+async function loadGarageAndVehicleData() {
+    const garageData = await fetch("http://localhost:8083/api/garages");
+    const externalId = await fetch("http://localhost:8083/api/garages/{id}/vehicles");
+    const data = await garageData.json().concat(await externalId.json());
+    document.getElementById("output").textContent =
+        JSON.stringify(data, null, 2);
+}
+
 
 async function loadCars() {
     const res = await fetch("http://localhost:8082/api/cars");
@@ -13,9 +25,10 @@ async function loadCars() {
         JSON.stringify(data, null, 2);
 }
 
+
 async function loadBikes() {
     const res = await fetch("http://localhost:8081/api/bikes");
     const data = await res.json();
     document.getElementById("output").textContent =
         JSON.stringify(data, null, 2);
-}   
+}
