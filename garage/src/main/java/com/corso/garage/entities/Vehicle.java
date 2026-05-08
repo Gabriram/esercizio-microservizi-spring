@@ -37,7 +37,6 @@ public class Vehicle {
     @Column(name = "vehicle_type")
     private String vehicleType; // "BIKE" o "CAR"
 
-    @ManyToOne
     @JoinColumn(name = "garage_id")
     @JsonIgnore // evita ciclo di serializzazione
     private Garage garage;

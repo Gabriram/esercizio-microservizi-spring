@@ -36,6 +36,5 @@ public class Garage {
     @Column(name = "address")
     private String address;
 
-    @OneToMany(mappedBy = "garage", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Vehicle> vehicles;
 }
