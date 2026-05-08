@@ -76,10 +76,10 @@ public class GarageService {
         }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Garage not found with ID: " + id));
     }
 
-    public Optional<VehicleResponseDto> getVehicleById(Long id) {
-        return garageRepository.findById(id)
+    public Optional<VehicleResponseDto> getVehicleById(Long garageId, Long vehicleId) {
+        return garageRepository.findById(garageId)
                 .flatMap(garage -> garage.getVehicles().stream()
-                        .filter(vehicle -> vehicle.getId().equals(id))
+                        .filter(vehicle -> vehicle.getId().equals(vehicleId))
                         .findFirst())
                 .map(garageMapper::toVehicleResponseDto);
     }

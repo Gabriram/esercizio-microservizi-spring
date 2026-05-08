@@ -77,10 +77,10 @@ public class Controller {
         return ResponseEntity.status(HttpStatus.CREATED).body(updatedGarage);
     }
 
-    @GetMapping("/{id}/vehicles")
-    public ResponseEntity<VehicleResponseDto> getVehicle(@RequestParam Long id) {
-        Optional<VehicleResponseDto> vehicleOptional = garageService.getVehicleById(id);
-        return vehicleOptional.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+    @GetMapping("/{garageId}/vehicles/{vehicleId}")
+    public ResponseEntity<VehicleResponseDto> getVehicle(@PathVariable Long garageId, @PathVariable Long vehicleId) {
+        Optional<VehicleResponseDto> vehicle = garageService.getVehicleById(garageId, vehicleId);
+        return vehicle.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
 
     }
 }
