@@ -39,6 +39,7 @@ public class Vehicle {
 
     @JoinColumn(name = "garage_id")
     @JsonIgnore
+    @ManyToOne
     private Garage garage;
 
 }

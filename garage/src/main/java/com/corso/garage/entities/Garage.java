@@ -36,5 +36,6 @@ public class Garage {
     @Column(name = "address")
     private String address;
 
+    @OneToMany(mappedBy = "garage")
     private List<Vehicle> vehicles;
 }
